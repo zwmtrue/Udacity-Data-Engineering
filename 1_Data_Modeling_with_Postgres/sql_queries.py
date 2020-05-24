@@ -22,7 +22,6 @@ Create Table If Not Exists songplays(
 )
 """)
 
-# This table doesn't necessarily need any NOT NULL constraints, but the last reviewer has been demanding
 user_table_create = ("""
 Create Table If Not Exists users(
     user_id varchar PRIMARY KEY, 
@@ -53,7 +52,6 @@ Create Table If Not Exists artists(
 )
 """)
 
-# Time table doesn't need any NOT NULL constarint, and won't have null values as long as PK constarint is stasified.
 time_table_create = ("""
 Create Table If Not Exists time(
     start_time timestamp PRIMARY KEY,
