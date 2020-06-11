@@ -1,32 +1,3 @@
-CREATE TABLE public.artists (
-	artistid varchar(256) NOT NULL,
-	name varchar(256),
-	location varchar(256),
-	lattitude numeric(18,0),
-	longitude numeric(18,0)
-);
-
-CREATE TABLE public.songplays (
-	playid varchar(32) NOT NULL,
-	start_time timestamp NOT NULL,
-	userid int4 NOT NULL,
-	"level" varchar(256),
-	songid varchar(256),
-	artistid varchar(256),
-	sessionid int4,
-	location varchar(256),
-	user_agent varchar(256),
-	CONSTRAINT songplays_pkey PRIMARY KEY (playid)
-);
-
-CREATE TABLE public.songs (
-	songid varchar(256) NOT NULL,
-	title varchar(256),
-	artistid varchar(256),
-	"year" int4,
-	duration numeric(18,0),
-	CONSTRAINT songs_pkey PRIMARY KEY (songid)
-);
 
 CREATE TABLE public.staging_events (
 	artist varchar(256),
@@ -62,16 +33,36 @@ CREATE TABLE public.staging_songs (
 	"year" int4
 );
 
-CREATE TABLE public."time" (
+CREATE TABLE public.artists (
+	artistid varchar(256) NOT NULL,
+	name varchar(256),
+	location varchar(256),
+	lattitude numeric(18,0),
+	longitude numeric(18,0)
+);
+
+CREATE TABLE public.songplays (
+	playid varchar(32) NOT NULL,
 	start_time timestamp NOT NULL,
-	"hour" int4,
-	"day" int4,
-	week int4,
-	"month" varchar(256),
+	userid int4 NOT NULL,
+	"level" varchar(256),
+	songid varchar(256),
+	artistid varchar(256),
+	sessionid int4,
+	location varchar(256),
+	user_agent varchar(256),
+	CONSTRAINT songplays_pkey PRIMARY KEY (playid)
+);
+
+CREATE TABLE public.songs (
+	songid varchar(256) NOT NULL,
+	title varchar(256),
+	artistid varchar(256),
 	"year" int4,
-	weekday varchar(256),
-	CONSTRAINT time_pkey PRIMARY KEY (start_time)
-) ;
+	duration numeric(18,0),
+	CONSTRAINT songs_pkey PRIMARY KEY (songid)
+);
+
 
 CREATE TABLE public.users (
 	userid int4 NOT NULL,
@@ -81,3 +72,17 @@ CREATE TABLE public.users (
 	"level" varchar(256),
 	CONSTRAINT users_pkey PRIMARY KEY (userid)
 );
+
+CREATE TABLE public.time (
+	start_time timestamp NOT NULL,
+	hour int4,
+	day int4,
+	week int4,
+	month varchar(255),
+	year int4,
+	weekday varchar(255),
+	CONSTRAINT time_pkey PRIMARY KEY (start_time)
+);
+
+
+

@@ -20,7 +20,7 @@ class SqlQueries:
     """)
 
     user_table_insert = ("""
-        SELECT distinct userid, firstname, lastname, gender, level
+        SELECT distinct cast(userid as int4) as userid, firstname, lastname, gender, level
         FROM staging_events
         WHERE page='NextSong'
     """)
@@ -40,3 +40,14 @@ class SqlQueries:
                extract(month from start_time), extract(year from start_time), extract(dayofweek from start_time)
         FROM songplays
     """)
+        
+    get_cnt = "SELECT COUNT(*) FROM {}"
+    
+    
+    copy_qry = """
+            COPY {}
+            FROM '{}'
+            ACCESS_KEY_ID '{}'
+            SECRET_ACCESS_KEY '{}'
+            json '{}';
+        """
